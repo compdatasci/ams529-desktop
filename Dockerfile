@@ -95,6 +95,7 @@ ENV FENICS_BUILD_TYPE=Release \
 RUN FENICS_SRC_DIR=/tmp/src $DOCKER_HOME/bin/fenics-pull && \
     FENICS_SRC_DIR=/tmp/src $DOCKER_HOME/bin/fenics-build && \
     ldconfig && \
+    rm -rf /tmp/src && \
     rm -f $DOCKER_HOME/bin/fenics-*
 
 ENV PYTHONPATH=$FENICS_PREFIX/lib/python3/dist-packages:$PYTHONPATH
