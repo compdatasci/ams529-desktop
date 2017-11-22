@@ -137,7 +137,7 @@ def handle_interrupt(container):
     except KeyboardInterrupt:
         print('*** Stopping the server.')
         subprocess.Popen(["docker", "exec", container,
-                          "killall", "jupyter-notebook"],
+                          "killall", "my_init"],
                          stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         sys.exit(0)
 
@@ -289,16 +289,20 @@ if __name__ == "__main__":
                         p.terminate()
                         wait_for_url = False
                         break
+
             if args.detach:
                 print('Started container ' + container + ' in background.')
                 print('To stop it, use "docker stop ' + container + '".')
                 sys.exit(0)
 
             print("Press Ctrl-C to stop the server.")
+            time.sleep(1)
 
             # Wait till the container exits or Ctlr-C is pressed
-            subprocess.check_output(["docker", "exec", container,
-                                     "tail", "-f", "/dev/null"])
+            subprocess.call(["docker", "exec", container,
+                             "tail", "-F", "-n", "0",
+                             docker_home + "/.log/jupyter.log"])
+
         except subprocess.CalledProcessError:
             try:
                 # If Docker process no long exists, exit
