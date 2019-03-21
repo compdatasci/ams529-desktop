@@ -52,12 +52,12 @@ curl https://raw.githubusercontent.com/compdatasci/ams529-desktop/master/ams529_
 ```
 On Linux or Mac, start a terminal, use the `cd` command to change to the working directory, and then run the following command:
 ```
-curl -s -O https://raw.githubusercontent.com/compdatasci/ams529-desktop/master/ams529_jupyer.py
+curl -s -O https://raw.githubusercontent.com/compdatasci/ams529-desktop/master/ams529_jupyter.py
 ```
 
 After downloading the script, you can start the Docker image using the command
 ```
-python ams529_jupyer.py -p
+python ams529_jupyter.py -p
 ```
 This will download and run the Docker image and then launch your default web browser to show the Jupyter Notebook page. The `-p` option is optional, and it instructs the Python script to pull and update the image to the latest version.
 
