@@ -25,7 +25,7 @@ RUN apt-get update && \
     apt-get clean && \
     apt-get autoremove && \
     pip3 install -U octave_kernel && \
-    python3 -m octave_kernel.install && \
+    pip3 install -U jupyter && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Copy fenics-demo
